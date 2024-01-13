@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Unity.Entities;
+using UnityEngine;
 
 public class RotateSpeedAuthoring : MonoBehaviour
 {
@@ -12,7 +10,7 @@ public class RotateSpeedAuthoring : MonoBehaviour
         public override void Bake(RotateSpeedAuthoring authoring)
         {
             var entity = GetEntity(TransformUsageFlags.Dynamic);
-            AddComponentObject(entity, new RotateSpeed
+            AddComponent(entity, new RotateSpeed
             {
                 value = authoring.value
             });
@@ -21,7 +19,7 @@ public class RotateSpeedAuthoring : MonoBehaviour
 }
 
 
-public class RotateSpeed : IComponentData
+public struct RotateSpeed : IComponentData
 {
     public float value;
 }
